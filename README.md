@@ -115,7 +115,9 @@ Here's a breakdown of the complete ML system pipeline:
 ---
 
 📊 Comet-ML Dashboard
-Track experiments, logs, hyperparameters and more via:
+
+- Track experiments, logs, hyperparameters and more via:
+
 🔗 Comet-ML Project Link: "https://...."
 
 
