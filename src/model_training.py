@@ -1,5 +1,5 @@
 import joblib
-# import comet_ml
+import comet_ml
 import numpy as np
 import os
 from tensorflow.keras.callbacks import ModelCheckpoint,LearningRateScheduler,TensorBoard,EarlyStopping
@@ -7,6 +7,9 @@ from src.logger import get_logger
 from src.custom_exception import CustomException
 from src.base_model import BaseModel
 from config.paths_config import *
+from dotenv import load_dotenv
+
+load_dotenv()
 
 logger = get_logger(__name__)
 
@@ -14,12 +17,14 @@ class ModelTraining:
     def __init__(self,data_path):
         self.data_path= data_path
 
-        # self.experiment = comet_ml.Experiment(
-        #     api_key="uqgrnGhGvBA0zC3HfdmGf2WN9",
-        #     project_name="mlops-course-2",
-        #     workspace="data-guru0"
-        # )
-        logger.info("Model Training started.....")
+        self.experiment = comet_ml.Experiment(
+            # api_key = os.getenv("COMET_ML"),
+            api_key = "w34oXsNK9HDifM3g3OokENgvr",
+            project_name = "anime-rs",
+            workspace = "netra212"
+        )
+
+        logger.info("Model Training and COMET-ML Initialized....!")
     
     def load_data(self):
         try:
