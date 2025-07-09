@@ -18,9 +18,7 @@ class ModelTraining:
         self.data_path= data_path
 
         self.experiment = comet_ml.Experiment(
-            # api_key = os.getenv("COMET_ML"),
-            # w34oXsNK9HDifM3g3OokENgvr
-            api_key = ".....",
+            api_key = "w34oXsNK9HDifM3g3OokENgvr",
             project_name = "anime-rs",
             workspace = "netra212"
         )
