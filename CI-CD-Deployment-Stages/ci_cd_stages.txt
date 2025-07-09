@@ -36,21 +36,16 @@ After Creating Dockerfile ----> Open VS Code Terminal in CMD ----> cd custom_jen
 
 After this use following commands one by one:
 
-docker build -t jenkins-dind . 
+docker build -t custom-jenkins-docker . 
 docker images
 
-docker run -d --name jenkins-dind ^
---privileged ^
--p 8080:8080 -p 50000:50000 ^
--v //var/run/docker.sock:/var/run/docker.sock ^
--v jenkins_home:/var/jenkins_home ^
-jenkins-dind
+docker run -d --name custom-jenkins-docker --privileged -p 8080:8080 -p 50000:50000 -v //var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home custom-jenkins-docker
 
 
 ------ You will get some alphanumeric if code run is sucessfull....
 
 docker ps
-docker logs jenkins-dind
+docker logs custom-jenkins-docker
 
 ------- This will give you a password for Jenkins Installation ---> Copy that password
 
@@ -58,17 +53,18 @@ GO to browser--> localhost:8080 --> Paste that password --> Install suggested pl
 
 AGAIN COME TO TERMINAL ( custom_jenkins terminal ) : Write following commands -->
 
-docker exec -u root -it jenkins-dind bash
-apt update -y
-apt install -y python3
-python3 --version
-ln -s /usr/bin/python3 /usr/bin/python
-python --version
-apt install -y python3-pip
-apt install -y python3-venv
-exit
+- docker exec -u root -it custom-jenkins-docker bash
 
-docker restart jenkins-dind
+- apt update -y
+- apt install -y python3
+- python3 --version
+- ln -s /usr/bin/python3 /usr/bin/python
+- python --version
+- apt install -y python3-pip
+- apt install -y python3-venv
+- exit
+
+docker restart custom-jenkins-docker
 
 GO TO JENKINS DASHBOIARD AND SIGN IN AGAIN ----->
 
