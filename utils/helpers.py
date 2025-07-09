@@ -80,7 +80,6 @@ def find_similar_animes(name, path_anime_weights, path_anime2anime_encoded, path
 
 ######## 4. FIND_SIMILAR_USERS
 
-
 def find_similar_users(item_input , path_user_weights , path_user2user_encoded , path_user2user_decoded, n=10 , return_dist=False,neg=False):
     try:
 
