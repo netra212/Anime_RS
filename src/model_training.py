@@ -19,7 +19,8 @@ class ModelTraining:
 
         self.experiment = comet_ml.Experiment(
             # api_key = os.getenv("COMET_ML"),
-            api_key = "w34oXsNK9HDifM3g3OokENgvr",
+            # w34oXsNK9HDifM3g3OokENgvr
+            api_key = ".....",
             project_name = "anime-rs",
             workspace = "netra212"
         )
