@@ -5,7 +5,6 @@ import os
 RAW_DIR = "artifacts/raw"
 CONFIG_PATH = "config/config.yaml"
 
-
 ######################## DATA PROCESSING ##########################
 
 PROCESSED_DIR = "artifacts/processed"
@@ -27,7 +26,6 @@ USER2USER_DECODED = "artifacts/processed/user2user_decoded.pkl"
 
 ANIME2ANIME_ENCODED = "artifacts/processed/anim2anime_encoded.pkl"
 ANIME2ANIME_DECODED = "artifacts/processed/anim2anime_decoded.pkl"
-
 
 ###################### MODEL TRAINING #######################333
 
