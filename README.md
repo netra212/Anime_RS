@@ -66,6 +66,12 @@ An AI-powered **Anime Recommendation System** built with a full MLOps lifecycle 
 
 ---
 
+## Anime Recommender App
+
+![](/Images/app.png)
+
+---
+
 ## 📌 Project Components Overview
 
 | Component          | Description                                        |
@@ -183,4 +189,26 @@ Model:
   Loss: binary_crossentropy
   Metrics: [mae, mse]
 ```
+
+## 📊 Comet-ML Metrics Dashboard
+
+![Comet Metrics](Images/comet-ml-dashboard.png)
+
+---
+
+## 🔄 Jenkins CI/CD Pipeline
+
+![Jenkins Pipeline](Images/Successfully-Deployed.png)
+
+---
+
+## ☁️ GCP Kubernetes Deployment
+
+![GCP Kubernetes](Images/ml-app-with-end-point.png)
+
+---
+
+## 🧠 Neural Network Architecture
+
+![Model Architecture](assets/model-architecture.png)
 ---
