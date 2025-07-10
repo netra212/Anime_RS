@@ -20,8 +20,7 @@ RUN apt-get update -y && \
     apt-get clean
 
 # Add Jenkins user to the Docker group (create if it doesn't exist)
-RUN groupadd -f docker && \
-    usermod -aG docker jenkins
+RUN groupadd -f docker && usermod -aG docker jenkins
 
 # Create the Docker directory and volume for DinD
 RUN mkdir -p /var/lib/docker
@@ -109,10 +108,9 @@ CMD ["python", "application.py"]
 
 ---------- INSTALL GOOGLE CLOUD  and Kubernetes CLI ON JENKINS CONTAINER ------------
 
-
 ---- Come to Terminal( custom_jenkins terminal )
 
-docker exec -u root -it jenkins-dind bash
+docker exec -u root -it custom-jenkins-docker bash
 apt-get update
 apt-get install -y curl apt-transport-https ca-certificates gnupg
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
@@ -129,12 +127,12 @@ exit
 
 ---------- GRANT DOCKER PERMSIION TO JENKINS USER :
 
-docker exec -u root -it jenkins-dind bash
+docker exec -u root -it custom-jenkins-docker bash
 groupadd docker
 usermod -aG docker jenkins
 usermod -aG root jenkins
 exit
-docker restart jenkins-dind
+docker restart custom-jenkins-docker
 
 --------------------- KUBERNETES DEPLOYMENT YAML ------------------------
 
