@@ -66,118 +66,121 @@ An AI-powered **Anime Recommendation System** built with a full MLOps lifecycle 
 
 ---
 
-🚀 Project Highlights
+## 📌 Project Components Overview
 
-Component	    Description
-Frameworks	  TensorFlow, NumPy, Pandas
-MLOps         Tools	Comet-ML, DVC, Jenkins, Docker, Kubernetes, GCP
-Frontend	    HTML5, CSS3
-Model	        Custom-built Neural Network
-Embedding     Size	128
-Loss	        Binary Crossentropy
-Optimizer	    Adam
-Metrics	      MAE, MSE
-Deployment	  GCP Kubernetes Cluster
+| Component          | Description                                        |
+|------------------  |----------------------------------------------------|
+| **Frameworks**     | TensorFlow, NumPy, Pandas                          |
+| **MLOps Tools**    | Comet-ML, DVC, Jenkins, Docker, Kubernetes, GCP    |
+| **Frontend**       | HTML5, CSS3                                        |
+| **Model**          | Custom-built Neural Network                        |
+| **Embedding Size** | 128                                                |
+| **Loss**           | Binary Crossentropy                                |
+| **Optimizer**      | Adam                                               |
+| **Metrics**        | MAE, MSE                                           |
+| **Deployment**     | GCP Kubernetes Cluster                             |
+
+---
+
+## 📈 Comet-ML Metrics & Model Performance
+
+| Metric            | Value     |
+|-------------------|-----------|
+| `train_loss`      | 0.7638    |
+| `val_loss`        | 0.7773    |
+| `batch_mae`       | 0.3723    |
+| `batch_mse`       | 0.1840    |
+| `mae`             | 0.372     |
+| `mse`             | 0.184     |
+| `learning_rate`   | 0.000034  |
+| `epoch_duration`  | ~4.46 sec |
 
 ---
 
-📈 Comet-ML Metrics Snapshot
-Metric	          Value
-train_loss	      0.7638
-val_loss	        0.7773
-batch_mae	        0.3723
-batch_mse	        0.1840
-learning_rate	    0.000034
+## 🧪 How to Run Locally
 
----
----
-📈 Metrics & Performance
-
-* Validation Loss: 0.777
-
-* MAE: 0.372
-
-* MSE: 0.184
-
-* Learning Rate: 3.4e-5
-
-* Epoch Duration: ~4.46 sec
----
-
-🧪 How to Run Locally
-
-# 1. Clone the repo
+### 1. Clone the repo
+```
 git clone https://github.com/netra212/anime-rs.git
 cd anime-rs
+```
 
-# 2. Create and activate virtualenv
+### 2. Create and activate virtualenv
+```
 python -m venv animeenv
+
 source animeenv/bin/activate
+```
 
-# 3. Install dependencies
-pip install -r requirements.txt
+### 3. Install dependencies
+```pip install -r requirements.txt```
 
-# 4. Trigger training pipeline
-python pipeline/training_pipeline.py
+### 4. Trigger training pipeline
+```python pipeline/training_pipeline.py```
 
-# 5. Launch API (Flask/FastAPI)
-python application.py
+### 5. Launch API (Flask/FastAPI)
+```python application.py```
 
 
 ---
 
-📦 CI/CD Pipeline
+## 📦 CI/CD Pipeline (Jenkins + Docker + GCP Kubernetes)
 
-graph TD;
-    A [Git Commit] --> B[Jenkins CI/CD];
+```
+    A[Git Commit] --> B[Jenkins CI/CD];
     B --> C[Run Unit Tests];
     C --> D[Build Docker Image];
-    D --> E[Push to GCR];
-    E --> F[Deploy to Kubernetes Cluster];
-
-
+    D --> E[Push to Google Container Registry (GCR)];
+    E --> F[Deploy to GCP Kubernetes Cluster];
+```
 ---
 
-📂 Data Versioning (via DVC)
-Tracks raw → processed → model stages.
+## 📂 Data Versioning (via DVC)
 
-All .dvc files track data pipelines and metrics.
+This project uses **DVC (Data Version Control)** to manage and version datasets and model artifacts across the ML pipeline stages:
 
-Remote storage: GCP Bucket
-```
+- 📥 **Stages Tracked:** `raw` → `processed` → `model`
+- 📊 **Tracked Files:** `.dvc` metadata files capture pipeline states and metrics.
+- ☁️ **Remote Storage:** GCP Bucket (`gs://......`)
+
+### 🚀 Key Commands
+
+```bash
+# Initialize DVC in the project
 dvc init
+
+# Track raw data
 dvc add artifacts/raw
+
+# Push data to remote storage
 dvc push -r myremote
 ```
 
 ---
-🌐 Deployment (GCP + Kubernetes)
-* Built image using custom Dockerfile.
 
-* Deployed via deployment.yaml on GKE cluster.
+## 🌐 Deployment (GCP + Kubernetes)
 
-* Configured autoscaling and persistent storage.
+This project is fully containerized and deployed on **Google Kubernetes Engine (GKE)** for scalability and reliability.
 
-* Exposed through external load balancer.
+### 🚢 Deployment Steps:
+
+- 🛠️ **Containerization:** Built a Docker image using a custom `Dockerfile`.
+- 📦 **Kubernetes Deployment:** Applied `deployment.yaml` to launch pods and services on GKE.
+- ⚙️ **Autoscaling:** Configured Horizontal Pod Autoscaler (HPA) for handling traffic spikes.
+- 💾 **Persistent Storage:** Mounted volumes for data and model checkpoints.
+- 🌐 **Load Balancing:** Service is exposed to the internet using an external LoadBalancer via Kubernetes `Service`.
+
+> All services run seamlessly inside a Kubernetes-managed cluster on GCP.
+
 
 ---
-📌 Model Architecture Summary
-```
+## 📌 Model Architecture Summary
+
+```yaml
 Model:
   Embedding Size: 128
   Optimizer: Adam
   Loss: binary_crossentropy
   Metrics: [mae, mse]
 ```
-
----
-📍 Tech Stack Summary
-Category	            Tools Used
-Data Versioning	      DVC + GCP Bucket
-CI/CD	                Jenkins + Docker + Kubernetes
-Tracking	            Comet-ML
-Model Dev	            TensorFlow, Python
-Deployment	          GCP GKE
-UI	                  HTML5 + CSS
-
 ---
