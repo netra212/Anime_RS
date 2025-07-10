@@ -35,8 +35,8 @@ After Creating Dockerfile ----> Open VS Code Terminal in CMD ----> cd custom_jen
 
 After this use following commands one by one:
 
-docker build -t custom-jenkins-docker . 
-docker images
+- docker build -t custom-jenkins-docker . 
+- docker images
 
 docker run -d --name custom-jenkins-docker --privileged -p 8080:8080 -p 50000:50000 -v //var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home custom-jenkins-docker
 
