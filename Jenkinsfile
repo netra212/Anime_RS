@@ -14,7 +14,7 @@ pipeline {
             steps{
                 script{
                     echo 'Cloning from Github...'
-                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/netra212/Anime_RS.git']])
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token-anime', url: 'https://github.com/netra212/Anime_RS.git']])
                 }
             }
         }
@@ -34,9 +34,10 @@ pipeline {
             }
         }
 
+
         stage('DVC Pull'){
             steps{
-                withCredentials([file(credentialsId:'gcp-key' , variable: 'GOOGLE_APPLICATION_CREDENTIALS' )]){
+                withCredentials([file(credentialsId:'gcp-anime-key' , variable: 'GOOGLE_APPLICATION_CREDENTIALS' )]){
                     script{
                         echo 'DVC Pull....'
                         sh '''
@@ -51,7 +52,7 @@ pipeline {
 
         stage('Build and Push Image to GCR'){
             steps{
-                withCredentials([file(credentialsId:'gcp-key' , variable: 'GOOGLE_APPLICATION_CREDENTIALS' )]){
+                withCredentials([file(credentialsId:'gcp-anime-key' , variable: 'GOOGLE_APPLICATION_CREDENTIALS' )]){
                     script{
                         echo 'Build and Push Image to GCR'
                         sh '''
@@ -70,7 +71,7 @@ pipeline {
 
         stage('Deploying to Kubernetes'){
             steps{
-                withCredentials([file(credentialsId:'gcp-key' , variable: 'GOOGLE_APPLICATION_CREDENTIALS' )]){
+                withCredentials([file(credentialsId:'gcp-anime-key' , variable: 'GOOGLE_APPLICATION_CREDENTIALS' )]){
                     script{
                         echo 'Deploying to Kubernetes'
                         sh '''
