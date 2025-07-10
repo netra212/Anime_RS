@@ -210,5 +210,5 @@ Model:
 
 ## 🧠 Neural Network Architecture
 
-![Model Architecture](assets/model-architecture.png)
+![Model Architecture](Images/Neural-Network-Architecture.png)
 ---
