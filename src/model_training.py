@@ -7,9 +7,6 @@ from src.logger import get_logger
 from src.custom_exception import CustomException
 from src.base_model import BaseModel
 from config.paths_config import *
-from dotenv import load_dotenv
-
-load_dotenv()
 
 logger = get_logger(__name__)
 
