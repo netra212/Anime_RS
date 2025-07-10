@@ -62,6 +62,7 @@ An AI-powered **Anime Recommendation System** built with a full MLOps lifecycle 
 ├── setup.py
 ├── application.py              # FastAPI/Flask app
 └── README.md
+```
 
 ---
 
